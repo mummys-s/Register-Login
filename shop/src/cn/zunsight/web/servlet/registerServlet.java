@@ -58,6 +58,16 @@ public class registerServlet extends HttpServlet {
 			errors.put("tel", "电话号码必须是11位！");
 		}
 		
+		String verify = (String) request.getSession().getAttribute("session_vcode");
+		String verifyCode = form.getVerifyCode();
+		if(verifyCode == null || verifyCode.trim().isEmpty()) {
+			errors.put("verifyCode", "验证码不能为空!");
+		}else if(verifyCode.length() != 4) {
+			errors.put("verifyCode", "验证码必须是11位！");
+		}else if(!verifyCode.equalsIgnoreCase(verify)) {
+			errors.put("verifyCode", "验证码错误!");
+		}
+		
 		if(errors != null && errors.size() > 0) {
 			//保存错误信息
 			request.setAttribute("errors", errors);

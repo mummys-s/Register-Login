@@ -5,18 +5,21 @@ public class Person {
 	private String pname;
 	private String ppassword;
 	private String ptel;
+	private String verifyCode;
 	
 	public Person() {
 		
 	}
 
-	public Person(String pid, String pname, String ppassword, String ptel) {
+	public Person(String pid, String pname, String ppassword, String ptel, String verifyCode) {
 		super();
 		this.pid = pid;
 		this.pname = pname;
 		this.ppassword = ppassword;
 		this.ptel = ptel;
+		this.verifyCode = verifyCode;
 	}
+
 
 	public String getPid() {
 		return pid;
@@ -49,10 +52,20 @@ public class Person {
 	public void setPtel(String ptel) {
 		this.ptel = ptel;
 	}
+	
+
+	public String getVerifyCode() {
+		return verifyCode;
+	}
+
+	public void setVerifyCode(String verifyCode) {
+		this.verifyCode = verifyCode;
+	}
 
 	@Override
 	public String toString() {
-		return "Person [pid=" + pid + ", pname=" + pname + ", ppassword=" + ppassword + ", ptel=" + ptel + "]";
+		return "Person [pid=" + pid + ", pname=" + pname + ", ppassword=" + ppassword + ", ptel=" + ptel
+				+ ", verifyCode=" + verifyCode + "]";
 	}
 
 }

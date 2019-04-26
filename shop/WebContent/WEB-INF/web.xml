@@ -29,4 +29,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VerifyCodeServlet</display-name>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <servlet-class>cn.zunsight.web.servlet.VerifyCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerifyCodeServlet</servlet-name>
+    <url-pattern>/verify</url-pattern>
+  </servlet-mapping>
 </web-app>
