@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 			//将信息存放在seession中
 			request.getSession().setAttribute("session_person", person);
 			//重定向到index.jsp中
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			response.sendRedirect(request.getContextPath() + "/list");
 		} catch (PersonException e) {
 			//将错误信息放在request中
 			request.setAttribute("msg", e.getMessage());

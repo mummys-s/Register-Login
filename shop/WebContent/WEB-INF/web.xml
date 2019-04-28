@@ -39,4 +39,44 @@
     <servlet-name>VerifyCodeServlet</servlet-name>
     <url-pattern>/verify</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListPersonServlet</display-name>
+    <servlet-name>ListPersonServlet</servlet-name>
+    <servlet-class>cn.zunsight.web.servlet.ListPersonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListPersonServlet</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoadServlet</display-name>
+    <servlet-name>LoadServlet</servlet-name>
+    <servlet-class>cn.zunsight.web.servlet.LoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadServlet</servlet-name>
+    <url-pattern>/load</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditServlet</display-name>
+    <servlet-name>EditServlet</servlet-name>
+    <servlet-class>cn.zunsight.web.servlet.EditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditServlet</servlet-name>
+    <url-pattern>/edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteServlet</display-name>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>cn.zunsight.web.servlet.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteServlet</servlet-name>
+    <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -29,4 +29,25 @@ public class PersonService {
 		return person;
 	}
 	
+	//查找全部用户信息
+	public List<Person> findAll(){
+		return dao.findAll();
+	}
+	
+	//加载用户
+	public Person findById(String pid) {
+		return dao.findById(pid);
+	}
+	
+	//编辑用户
+	public void edit(Person p) {
+		dao.edit(p);
+	}
+	
+	//删除用户
+	public void delete(String pid) {
+		System.out.println("service:"+pid);
+		dao.delete(pid);
+	}
+	
 }
