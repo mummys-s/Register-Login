@@ -18,7 +18,7 @@
 		<th>电话</th>
 		<th>操作</th>
 	</tr>
-<c:forEach items="${requestScope.personlist }" var="cstm">
+<c:forEach items="${pd.beanList }" var="cstm">
 
 <%-- <%=request.getAttribute("personlist") %> --%>
 	<tr>
@@ -33,5 +33,48 @@
 </c:forEach>
 </table>
 <br/>
+<center>
+第${pd.pc }页/共${pd.tp }页
+<a href="<c:url value='/list?pc=1'/>">首页</a>
+<c:if test="${pd.pc > 1 }">
+	<a href="<c:url value='/list?pc=${pd.pc-1 }'/>">上一页</a>
+</c:if>
+
+<c:choose>
+	<c:when test="${pd.tp <= 10 }">
+		<c:set var="begin" value="1"/>
+		<c:set var="end" value="${pd.tp }"/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="begin" value="${pd.pc-5 }"/>
+		<c:set var="end" value="${pd.pc+4 }"/>
+		<c:if test="${begin < 1 }">
+			<c:set var="begin" value="1"/>
+			<c:set var="end" value="10"/>
+		</c:if>
+		<c:if test="${end > pd.tp }">
+			<c:set var="begin" value="${pd.tp - 9 }"/>
+			<c:set var="end" value="${pd.tp }"/>
+		</c:if>
+	</c:otherwise>
+</c:choose>
+
+<c:forEach  var="i" begin="${begin }" end="${end }">
+	<c:choose>
+		<c:when test="${i eq pd.pc }">
+			${i }
+		</c:when>
+		<c:otherwise>
+			<a href="<c:url value='/list?pc=${i }'/>">${i }</a>
+		</c:otherwise>
+	</c:choose> 
+</c:forEach>
+
+
+<c:if test="${pd.pc < pd.tp }">
+	<a href="<c:url value='/list?pc=${pd.pc+1 }'/>">下一页</a>
+</c:if>
+<a href="<c:url value='/list?pc=${pd.tp }'/>">尾页</a>
+</center>
 </body>
 </html>

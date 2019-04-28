@@ -7,10 +7,12 @@ import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import cn.itcast.jdbc.JdbcUtils;
 import cn.itcast.jdbc.TxQueryRunner;
 import cn.itcast.servlet.BaseServlet;
+import cn.zunsight.domain.PageBean;
 import cn.zunsight.domain.Person;
 
 /*
@@ -43,10 +45,24 @@ public class PersonDao {
 	}
 	
 	//查找全部
-	public List<Person> findAll(){
+	public PageBean<Person> findAll(int pc,int ps){
 		try {
-			String sql = "select * from person";
-			return qr.query(sql, new BeanListHandler<Person>(Person.class));
+			//设置pagebean对象pd
+			PageBean<Person> pd = new PageBean<Person>();
+			//设置当前页码pc和每页记录数ps
+			pd.setPc(pc);
+			pd.setPs(ps);
+			//得到总记录数
+			String sql = "select count(*) from person";
+			Number num = (Number) qr.query(sql, new ScalarHandler());
+			int tr = num.intValue();
+			pd.setTr(tr);
+			//得到beanlist
+			sql = "select * from person order by pname limit ?,?";
+			List<Person> beanList = qr.query(sql, 
+					new BeanListHandler<Person>(Person.class),(pc-1)*ps,ps);
+			pd.setBeanList(beanList);
+			return pd;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

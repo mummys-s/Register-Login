@@ -27,7 +27,7 @@ public class EditServlet extends HttpServlet {
 		//保存成功信息
 		response.getWriter().print("<h1>修改成功</h1><a href='"+
 				request.getContextPath() + 
-				"/l" + "'>点击查看用户信息</a>");
+				"/list" + "'>点击查看用户信息</a>");
 
 	}
 

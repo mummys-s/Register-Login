@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import cn.zunsight.Dao.PersonDao;
+import cn.zunsight.domain.PageBean;
 import cn.zunsight.domain.Person;
 
 public class PersonService {
@@ -30,8 +31,8 @@ public class PersonService {
 	}
 	
 	//查找全部用户信息
-	public List<Person> findAll(){
-		return dao.findAll();
+	public PageBean<Person> findAll(int pc,int ps){
+		return dao.findAll(pc, ps);
 	}
 	
 	//加载用户
